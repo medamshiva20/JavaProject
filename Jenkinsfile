@@ -20,7 +20,6 @@ stage('ContinuousTesting')
 }
 stage ('ContinuousDelivery')
 {
-#    input message: 'Waiting for approval from the DM!', submitter: 'Sravani'
     sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipiline5/webapp/target/webapp.war ubuntu@172.31.17.160:/var/lib/tomcat8/webapps/ProdApp5.war'
 }
 }
