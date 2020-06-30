@@ -1,25 +1,43 @@
-node('master')
+pipeline
 {
-   stage('ContinuousDownload')
-   {
-    git 'https://github.com/medamshiva20/Maven11.git'
-   }
-   stage('ContinuousBuild') 
-   {
-    sh label: '', script: 'mvn package'
-   }
-   stage('ContinuousDeployment') 
-   {
-   sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipiline5/webapp/target/webapp.war ubuntu@172.31.21.197:/var/lib/tomcat8/webapps/TestingApp5.war'   
-}
-stage('ContinuousTesting')
-{
-  git 'https://github.com/medamshiva20/FunctionalTesting.git'
-  sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/ScriptedPipiline5/testing.jar'
-  
-}
-stage ('ContinuousDelivery')
-{
-    sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipiline5/webapp/target/webapp.war ubuntu@172.31.17.160:/var/lib/tomcat8/webapps/ProdApp5.war'
-}
+    agent any
+    stages
+    {
+        stage('ContinuousDownload_Loans')
+        {
+            steps
+            {
+                script
+                {
+                   try
+                   {
+                       git 'https://github.com/intelliqittrainings/maven.git'
+                   }
+                   catch(Exception e1)
+                   {
+                       mail bcc: '', body: 'Jenkins is unable to download from remote github', cc: '', from: '', replyTo: '', subject: 'Download failed', to: 'gitadmin@outlook.com'
+                       exit(1)
+                   }
+                }
+            }
+        }
+         stage('ContinuousBuild_Loans')
+        {
+            steps
+            {
+                script
+                {
+                   try
+                   {
+                       sh label: '', script: 'mvn package'
+                   }
+                   catch(Exception e2)
+                   {
+                       mail bcc: '', body: 'Jenkins is unable to create an artifact from the code', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'developers@outlook.com'
+                      exit(1)
+                   }
+                }
+            }
+	    }
+    }
 }
