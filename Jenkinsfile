@@ -39,7 +39,7 @@
                 }
             }
 }
-stage('ContinuousDeployment')
+ stage('ContinuousDeployment')
         {
             steps
             {
@@ -47,11 +47,11 @@ stage('ContinuousDeployment')
                 {
                    try
                    {
-                      sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/DeclarativePipeline/webapp/target/webapp.war ubuntu@172.31.31.15:/var/lib/tomcat8/webapps/testwebapp.war'
+                    sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/MultibranchPipeline_master/webapp/target/webapp.war ubuntu@172.31.31.15:/var/lib/tomcat8/webapps/Mtestwebapp.war'
                    }
                    catch(Exception e3)
                    {
-                       mail bcc: '', body: 'Jenkins is unable to deploy into tomcat on the QaServers', cc: '', from: '', replyTo: '', subject: 'Deployment failed', to: 'middleware@outlook.com'
+          mail bcc: '', body: 'Deploy the artifact into the testing server', cc: '', from: '', replyTo: '', subject: 'Deploy the artifact into the testing server', to: 'medamshiva20@gmail.com'
                        exit(1)
                    }
                 }
