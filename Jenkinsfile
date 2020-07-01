@@ -39,25 +39,6 @@
                 }
             }
 }
- stage('ContinuousDeployment')
-        {
-            steps
-            {
-                script
-                {
-                   try
-                   {
-                   sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/MultibranchPipeline_master/webapp/target/webapp.war ubuntu@172.31.17.160:/var/lib/tomcat8/webapps/Mtestwebapp.war'
-                   }
-                   catch(Exception e3)
-                   {
-                                   mail bcc: '', body: 'Deploy the artifact into the testing server', cc: '', from: '', replyTo: '', subject: 'Deploy the artifact into the testing server', to: 'medamshiva20@gmail.com'
-                       exit(1)
-                   }
-                }
-            }
-
-        }
 }
 }
 
