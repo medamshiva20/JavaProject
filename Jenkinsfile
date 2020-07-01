@@ -39,5 +39,25 @@
                 }
             }
 }
+stage('ContinuousDeployment')
+        {
+            steps
+            {
+                script
+                {
+                   try
+                   {
+                      sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/DeclarativePipeline/webapp/target/webapp.war ubuntu@172.31.31.15:/var/lib/tomcat8/webapps/testwebapp.war'
+                   }
+                   catch(Exception e3)
+                   {
+                       mail bcc: '', body: 'Jenkins is unable to deploy into tomcat on the QaServers', cc: '', from: '', replyTo: '', subject: 'Deployment failed', to: 'middleware@outlook.com'
+                       exit(1)
+                   }
+                }
+            }
+
+        }
 }
 }
+
