@@ -39,23 +39,5 @@ pipeline
                 }
             }
         }
-	stage('ContinuousDeployment_Loans')
-        {
-            steps
-            {
-                script
-                {
-                    try
-                    {
-                        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/Decpipeline1330/webapp/target/webapp.war ubuntu@172.31.25.211:/var/lib/tomcat8/webapps/dtestapp1330.war'
-                    }
-                    catch (Exception e3)
-                    {
-                        mail bcc: '', body: 'Continuous Deploy the code ', cc: '', from: '', replyTo: '', subject: 'Deploy the code', to: 'deployment@outlook.com'
-                        exit(1)
-                    }
-                }
-            }
-        }
         }
     }
