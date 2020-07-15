@@ -10,15 +10,15 @@ node('master')
     }
     stage('ContinuousDeployment')
     {
-        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline1/webapp/target/webapp.war ubuntu@172.31.37.80:/var/lib/tomcat8/webapps/stestapp1.war'
+        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline120/webapp/target/webapp.war ubuntu@172.31.25.211:/var/lib/tomcat8/webapps/stestapp120.war'
     }
     stage('ContinuousTesting')
     {
         git 'https://github.com/medamshiva20/FunctionalTesting.git'
-        sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/scriptedpipeline1/testing.jar'
+        sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/scriptedpipeline120/testing.jar'
     }
     stage('ContinuousDelivery')
     {
-        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline1/webapp/target/webapp.war ubuntu@172.31.24.83:/var/lib/tomcat8/webapps/sprodapp1.war'
+        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/scriptedpipeline120/webapp/target/webapp.war ubuntu@172.31.26.255:/var/lib/tomcat8/webapps/sprodapp120.war'
     }
 }
