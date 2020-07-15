@@ -3,7 +3,7 @@ pipeline
     agent any
     stages
     {
-        stage('ContinuousDownload')
+        stage('ContinuousDownload_Loans')
         {
             steps
             {
@@ -21,7 +21,7 @@ pipeline
                 }
             }
         }
-        stage('ContinuousBiuld')
+        stage('ContinuousBiuld_Loans')
         {
             steps
             {
@@ -39,7 +39,7 @@ pipeline
                 }
             }
         }
-        stage('ContinuousDeployment')
+        stage('ContinuousDeployment_Loans')
         {
             steps
             {
@@ -57,7 +57,7 @@ pipeline
                 }
             }
         }
-        stage('ContinuousTesting')
+        stage('ContinuousTesting_Loans')
         {
             steps
             {
@@ -76,7 +76,7 @@ pipeline
                 }
             }
         }
-        stage('ContinuousDelivery')
+        stage('ContinuousDelivery_Loans')
         {
             steps
             {
