@@ -1,43 +1,47 @@
 pipeline
+
 {
+
     agent any
+
     stages
+
     {
-        stage('ContinuousDownload_Loans')
+
+        stage('ContinuousDownload')
+
         {
+
             steps
+
             {
+
                 script
+
                 {
+
                     try
+
                     {
-                        git 'https://github.com/medamshiva20/JavaProject.git'
+
+                     git 'https://github.com/medamshiva20/JavaProject.git'   
+
                     }
-                    catch (Exception e1)
+
+                    catch(Exception e1)
+
                     {
-                        mail bcc: '', body: 'Continuous Download the code ', cc: '', from: '', replyTo: '', subject: 'Download the code', to: 'madamshiva20@gmail.com '
+
+                        mail bcc: '', body: 'Download the code from git hub', cc: '', from: '', replyTo: '', subject: 'Download the code', to: 'gitadmin@outlook.com'
+
                         exit(1)
+
                     }
+
                 }
+
             }
+
         }
-        stage('ContinuousBiuld_Loans')
-        {
-            steps
-            {
-                script
-                {
-                    try
-                    {
-                        sh label: '', script: 'mvn package'
-                    }
-                    catch (Exception e2)
-                    {
-                        mail bcc: '', body: 'ContinuousBuild the code ', cc: '', from: '', replyTo: '', subject: 'Build the code', to: 'medamshiva20@gmail.com '
-                        exit(1)
-                    }
-                }
-            }
-        }
-        }
-    }
+	}
+	}
