@@ -1,6 +1,6 @@
 <html>
 <body>
-<h1>Welcome To Techwave Consulting India Pvt Ltd</h1>
+<h1>Welcome To Techwave</h1>
 </body>
 <body style="color:red;">
  <div class="container">
