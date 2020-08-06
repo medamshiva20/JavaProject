@@ -1,4 +1,3 @@
----
 - name: configure the CICD through Ansible playbook
   hosts: devserver
   tasks:
