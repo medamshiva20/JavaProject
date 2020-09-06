@@ -40,5 +40,7 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
-
+  <sonar.host.url>
+   http://3.233.242.31:9000
+</sonar.host.url>
 </project>
