@@ -1,11 +1,11 @@
 node('master')
 {
-    stage('COntinuousDownload')
+    stage('Continuous Download')
     {
-        git credentialsId: 'Git', url: 'https://github.com/medamshiva20/JavaProject.git'
+        git credentialsId: '34d79418-82a6-4d03-a3a8-97cb5cf000d9', url: 'https://github.com/medamshiva20/JavaProject.git'
     }
-    stage('ContinuousBuild')
+    stage('Continuous Build')
     {
-        sh label: '', script: 'mvn package'
+        sh 'mvn package'
     }
 }
