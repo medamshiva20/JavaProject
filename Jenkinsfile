@@ -14,7 +14,7 @@ node('master')
     }
     stage('Continuous Testing')
     {
-        git 'https://github.com/medamshiva20/SeleniumTesting.git'
+       git 'https://github.com/medamshiva20/SeleniumTesting.git'
     }
     stage('Continuous Delivery')
     {
