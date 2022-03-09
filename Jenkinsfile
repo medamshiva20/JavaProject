@@ -18,7 +18,6 @@ stage('ContinuousTesting')
 }
 stage('ContinuousDelivery')
 {
-    input message: 'Waiting for interactive approval from delivery manager', submitter: 'srinivas'
     sh 'scp /home/ubuntu/.jenkins/workspace/scppipeline1/webapp/target/webapp.war ubuntu@172.31.20.160:/var/lib/tomcat8/webapps/prodapp2.war'
 }
 }
