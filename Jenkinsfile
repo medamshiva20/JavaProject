@@ -1,23 +1,24 @@
-node('master') 
+node('master')
 {
-stage('ContinuousDownload')
-{
-    git credentialsId: '8bad2997-6fdf-4359-b276-a8e166e7ae88', url: 'https://github.com/medamshiva20/JavaProject.git'
-}
-stage('ContinuousBuild')
-{
-  sh 'mvn package'   
-}
-stage('ContinuousDeployment')
-{
-    sh 'scp /home/ubuntu/.jenkins/workspace/scppipeline1/webapp/target/webapp.war ubuntu@172.31.29.148:/var/lib/tomcat8/webapps/testapp2.war'
-}
-stage('ContinuousTesting')
-{
-    git credentialsId: '8bad2997-6fdf-4359-b276-a8e166e7ae88', url: 'https://github.com/medamshiva20/SeleniumTesting.git'
-}
-stage('ContinuousDelivery')
-{
-    sh 'scp /home/ubuntu/.jenkins/workspace/scppipeline1/webapp/target/webapp.war ubuntu@172.31.20.160:/var/lib/tomcat8/webapps/prodapp2.war'
-}
+    stage('ContinuousDownlaod')
+    {
+        git credentialsId: '762fec62-9315-4086-a79c-03530a61770d', url: 'https://github.com/medamshiva20/JavaProject.git'
+    }
+    stage('ContinuousBuild')
+    {
+        sh 'mvn package'
+    }
+    stage('ContinuousDeployment')
+    {
+        sh 'scp /root/.jenkins/workspace/Scriptedpipeline1/webapp/target/webapp.war root@172.31.61.80:/var/lib/tomcat8/webapps/testapp.war'
+    }
+    stage('ContinuousTesting')
+    {
+        git credentialsId: '762fec62-9315-4086-a79c-03530a61770d', url: 'https://github.com/medamshiva20/SeleniumTesting.git'
+        sh 'java -jar /root/.jenkins/workspace/Scriptedpipeline1/testing.jar'
+    }
+    stage('ContinuousDelivery')
+    {
+        sh label: 'master', script: 'scp /root/.jenkins/workspace/Scriptedpipeline1/webapp/target/webapp.war root@172.31.28.194:/var/lib/tomcat8/webapps/prodapp.war'
+    }
 }
