@@ -11,12 +11,5 @@ pipeline
                  sh 'java -jar /root/.jenkins/workspace/Declarativepipeline1/testing.jar'
              }
          }
-         stage('ContinuousDelivery')
-         {
-             steps
-             {
-                 sh 'scp /root/.jenkins/workspace/Multibranchpipeline_master/webapp/target/webapp.war root@172.31.28.194:/var/lib/tomcat8/webapps/prodapp2.war'
-             }
-         }
         }
     }
