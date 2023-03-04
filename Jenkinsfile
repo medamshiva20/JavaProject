@@ -21,7 +21,7 @@ pipeline
          {
              steps
              {
-                sh 'scp /root/.jenkins/workspace/Declarativepipeline1/webapp/target/webapp.war root@172.31.61.80:/var/lib/tomcat8/webapps/testapp2.war'   
+                sh 'scp /root/.jenkins/workspace/Multibranchpipeline_master/webapp/target/webapp.war root@172.31.61.80:/var/lib/tomcat8/webapps/testapp2.war'   
              }
          }
         }
