@@ -3,7 +3,6 @@ pipeline
     agent any
     stages
     {
-<<<<<<< HEAD
          stage('ContinuousTesting')
          {
              steps
