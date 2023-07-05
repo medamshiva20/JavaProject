@@ -1,28 +1,23 @@
-pipeline
+node('master')
 {
-    agent any
-    stages
+    stage('Continuous Download')
     {
-        stage('ContinuousDownload')
-        {
-            steps
-            {
-              git 'https://github.com/medamshiva20/JavaProject.git'  
-            } 
-        }
-        stage('ContinuousBuild')
-        {
-            steps
-            {
-                sh 'mvn package'
-            }
-         }
-         stage('ContinuousDeployment')
-         {
-             steps
-             {
-                sh 'scp /root/.jenkins/workspace/Multibranchpipeline_master/webapp/target/webapp.war root@172.31.61.80:/var/lib/tomcat8/webapps/testapp2.war'   
-             }
-         }
-        }
+        git 'https://github.com/medamshiva20/JavaProject.git'
     }
+    stage('Continuous Build')
+    {
+        sh 'mvn package'
+    }
+    stage('Continuous Deployment')
+    {
+        sh 'scp /home/ubuntu/.jenkins/workspace/Scp-pipeline1/webapp/target/webapp.war ubuntu@172.31.4.211:/var/lib/tomcat9/webapps/testapp1.war'
+    }
+    stage('COntinuous Testing')
+    {
+        git 'https://github.com/medamshiva20/SeleniumTesting.git'
+    }
+    stage('Continuous Delivery')
+    {
+        sh 'scp /home/ubuntu/.jenkins/workspace/Scp-pipeline1/webapp/target/webapp.war ubuntu@172.31.5.183:/var/lib/tomcat9/webapps/prodapp1.war'
+    }
+}
