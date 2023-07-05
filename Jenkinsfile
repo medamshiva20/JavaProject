@@ -19,5 +19,6 @@ node('master')
     stage('Continuous Delivery')
     {
         sh 'scp /home/ubuntu/.jenkins/workspace/Scp-pipeline1/webapp/target/webapp.war ubuntu@172.31.5.183:/var/lib/tomcat9/webapps/prodapp1.war'
-    }
 }
+}
+
